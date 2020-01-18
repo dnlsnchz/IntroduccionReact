@@ -3,25 +3,35 @@ import React from 'react';
 import {
     BrowserRouter as ReactRouter,
     Route
-  } from 'react-router-dom';
+} from 'react-router-dom';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-  import App from './App';
+import App from './App';
+import Dashboard from './pages/Dashboard';
 
-export default class Router extends React.Component{
+const userSignedIn = true;
+export default class Router extends React.Component {
     signedinRoutes() {
-        if (false) {
+        if (userSignedIn) {
             return (
-                <Route path="/new" render={()=><h1>Bienvenidos</h1>} />
-                );
+                <Route path="/new" render={() => <h1>Bienvenidos</h1>} />
+            );
         }
     }
+
+    home() {
+        if (userSignedIn) {
+            return Dashboard;
+        }
+        return Home;
+    }
+
     render() {
         return (
             <ReactRouter>
                 <App>
-                    <Route exact path="/" component={Home}></Route>
+                    <Route exact path="/" component={this.home()}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/signup" component={Login}></Route>
                     {this.signedinRoutes()}
