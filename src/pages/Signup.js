@@ -7,36 +7,38 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import { Link } from 'react-router-dom';
 
-export default class Login extends React.Component{
-    render(){
+export default class Signup extends React.Component {
+    render() {
         return (
             <div className="row middle-xs">
                 <div className="col-xs-12 col-sm-6">
                     <Container>
-                        <div style={{ "textAlign":"left"}}>
+                        <div style={{ "textAlign": "left" }}>
                             <Title />
-                            <TextField 
+                            <TextField
                                 floatingLabelText="Correo Electronico"
                                 type="email"
                                 className="textfield"
                             />
-                    
-                            <TextField 
+
+                            <TextField
                                 floatingLabelText="Contraseña"
                                 type="password"
                                 className="textfield"
                             />
                             <div className="Login-actions">
-                                <Link to="/signup" style={{marginRight:"1em"}}>Crear nueva cuenta</Link>
-                                <RaisedButton label="Ingresar" secondary={true} />
-                                    </div>
+                                <Link to="/login" style={{ marginRight: "1em" }}>Ya tengo cuenta</Link>
+                                <RaisedButton label="Crear Cuenta" secondary={true} />
+                            </div>
                         </div>
-                </Container>
+                    </Container>
                 </div>
-                
+
                 <div className="col-xs-12 col-sm-6">
-                    <div className="Login-Background" style={{'backgroundImage':
-                    "url("+ process.env.PUBLIC_URL + '/images/fondo.jpg' +")" }}></div>
+                    <div className="Login-Background" style={{
+                        'backgroundImage':
+                            "url(" + process.env.PUBLIC_URL + '/images/fondosignup.jpg' + ")"
+                    }}></div>
                 </div>
             </div>
         )
