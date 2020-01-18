@@ -7,19 +7,26 @@ import {
 
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
   import App from './App';
 
-  export default class Router extends React.Component{
-    render(){
-        return(
-        <ReactRouter>
-            <App>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/login" component={Login}></Route>
-                    <Route path="/signup" component={Signup}></Route>
-            </App>
-        </ReactRouter>
+export default class Router extends React.Component{
+    signedinRoutes() {
+        if (false) {
+            return (
+                <Route path="/new" render={()=><h1>Bienvenidos</h1>} />
+                );
+        }
+    }
+    render() {
+        return (
+            <ReactRouter>
+                <App>
+                    <Route exact path="/" component={Home}></Route>
+                    <Route path="/login" component={Login}></Route>
+                    <Route path="/signup" component={Login}></Route>
+                    {this.signedinRoutes()}
+                </App>
+            </ReactRouter>
         )
     }
 }
