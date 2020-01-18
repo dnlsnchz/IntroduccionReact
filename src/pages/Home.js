@@ -3,7 +3,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-import {indigo400} from 'material-ui/styles/colors';
+import { indigo400 } from 'material-ui/styles/colors';
 
 import Title from '../components/Title';
 import Benefits from '../components/Benefits';
@@ -14,59 +14,59 @@ import Container from '../components/Container';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
 
-export default class Home extends React.Component{
+export default class Home extends React.Component {
 
-  constructor(props){
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      places: data.places
+        this.state = {
+            places: data.places
+        }
+
+
+        this.hidePlace = this.hidePlace.bind(this);
     }
 
+    places() {
+        return this.state.places.map((place, index) => {
+            return (
+                <PlaceCard onRemove={this.hidePlace} place={place} index={index} />
+            );
+        })
+    }
 
-    this.hidePlace = this.hidePlace.bind(this);
-  }
+    hidePlace(place) {
+        this.setState({
+            places: this.state.places.filter(el => el != place)
+        })
+    }
 
-  places(){
-    return this.state.places.map((place,index)=>{
-      return(
-        <PlaceCard onRemove={this.hidePlace} place={place} index={index} />
-      );
-    })
-  }
+    render() {
+        return (
+            <section>
+                <div className="Header-background">
+                    <Container>
+                        <div className="Header-main">
+                            <Title></Title>
 
-  hidePlace(place){
-    this.setState({
-      places: this.state.places.filter(el => el != place)
-    })
-  }
+                            <RaisedButton label="Crear cuenta gratuita" secondary={true} />
 
-  render(){
-    return(
-      <section>
-        <div className="Header-background">
-          <Container>
-            <div className="Header-main">
-              <Title></Title>
+                            <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/top-background.png'} />
+                        </div>
+                        <div>
+                            <Benefits />
+                        </div>
+                    </Container>
 
-              <RaisedButton label="Crear cuenta gratuita" secondary={true} />
-
-              <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/top-background.png'} />
-            </div>
-            <div>
-              <Benefits/>
-            </div>
-          </Container>
-
-        </div>
-        <div style={{'backgroundColor': indigo400, 'padding': '50px', color: 'white'}}>
-          <h3 style={{'fontSize': '24px'}}>Sitios Populares</h3>
-          <TransitionGroup className="row">
-            {this.places()}
-          </TransitionGroup>
-        </div>
-      </section>
-    );
-  }
+                </div>
+                <div style={{ 'backgroundColor': indigo400, 'padding': '50px', color: 'white' }}>
+                    <h3 style={{ 'fontSize': '24px' }}>Sitios Populares</h3>
+                    <TransitionGroup className="row">
+                        {this.places()}
+                    </TransitionGroup>
+                </div>
+            </section>
+        );
+    }
 
 }
