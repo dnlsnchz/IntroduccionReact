@@ -2,7 +2,8 @@ import React from 'react';
 
 import {
     BrowserRouter as ReactRouter,
-    Route
+    Route,
+    Switch
 } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -31,10 +32,12 @@ export default class Router extends React.Component {
         return (
             <ReactRouter>
                 <App>
-                    <Route exact path="/" component={this.home()}></Route>
-                    <Route path="/login" component={Login}></Route>
-                    <Route path="/signup" component={Login}></Route>
-                    {this.signedinRoutes()}
+                    <Switch>
+                        <Route exact path="/" component={this.home()}></Route>
+                        <Route path="/login" component={Login}></Route>
+                        <Route path="/signup" component={Login}></Route>
+                        {this.signedinRoutes()}
+                    </Switch>
                 </App>
             </ReactRouter>
         )

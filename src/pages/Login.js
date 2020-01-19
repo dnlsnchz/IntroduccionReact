@@ -30,7 +30,8 @@ export default class Login extends React.Component{
                                 type="password"
                                 className="textfield"
                             />
-                                <div className="Login-actions">
+                            <div className="Login-actions">
+                                <Link to="/" style={{ marginRight: "1em" }}>Inicio</Link>
                                     <Route path="/login" exact render={() => {
                                         return (
                                             <div>

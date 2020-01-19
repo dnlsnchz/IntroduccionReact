@@ -2,6 +2,9 @@ import React from 'react';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
+import {
+    Link
+} from 'react-router-dom';
 
 import { indigo400 } from 'material-ui/styles/colors';
 
@@ -48,8 +51,9 @@ export default class Home extends React.Component {
                     <Container>
                         <div className="Header-main">
                             <Title></Title>
-
-                            <RaisedButton label="Crear cuenta gratuita" secondary={true} />
+                            <Link to="/signup">
+                                <RaisedButton label="Crear cuenta gratuita" secondary={true} />
+                            </Link>
 
                             <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/top-background.png'} />
                         </div>
