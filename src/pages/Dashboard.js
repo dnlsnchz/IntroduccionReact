@@ -7,7 +7,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add'
 
 import { Link } from 'react-router-dom';
 
-import data from '../requests/places'
+import { getPlaces } from '../requests/places'
 import PlaceHorizontal from '../components/places/PlaceHorizontal';
 
 export default class Dashboard extends React.Component {
@@ -16,10 +16,19 @@ export default class Dashboard extends React.Component {
 		super(props);
 
 		this.state = {
-			places: data.places
+			places: []
 		}
 
-
+		this.loadPlaces();
+	}
+	loadPlaces() {
+		//console.log(getPlaces);
+		getPlaces().then(jsonR => {
+			console.log(jsonR);
+			this.setState({
+				places: jsonR.docs
+			})
+		});
 	}
 	places() {
 		return this.state.places.map((place, index) => {
