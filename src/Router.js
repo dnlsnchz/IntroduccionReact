@@ -5,6 +5,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -13,9 +14,10 @@ import Dashboard from './pages/Dashboard';
 import Place from './pages/Place';
 
 const userSignedIn = false;
-export default class Router extends React.Component {
-    signedinRoutes() {
-        if (userSignedIn) {
+
+class Router extends React.Component {
+    signedInRoutes() {
+        if (this.props.user.jwt) {
             return (
                 <Route path="/new" render={() => <h1>Bienvenidos</h1>} />
             );
@@ -23,7 +25,7 @@ export default class Router extends React.Component {
     }
 
     home() {
-        if (userSignedIn) {
+        if (this.props.user.jwt) {
             return Dashboard;
         }
         return Home;
@@ -38,10 +40,19 @@ export default class Router extends React.Component {
                         <Route path="/lugares/:slug" component={Place}></Route>
                         <Route path="/login" component={Login}></Route>
                         <Route path="/signup" component={Login}></Route>
-                        {this.signedinRoutes()}
+                        {this.signedInRoutes()}
                     </Switch>
                 </App>
             </ReactRouter>
         )
     }
 }
+
+
+
+function mapStateToProps(state, ownProps) {
+    return {
+        user: state.user
+    }
+}
+export default connect(mapStateToProps)(Router);
