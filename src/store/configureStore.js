@@ -1,5 +1,10 @@
-import { createStore,combineReducers } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
+import persistState from 'redux-localstorage'
 import reducers from '../reducers';
+
+const enhancer = compose(
+    persistState('user')
+);
 
 const rootReducer = combineReducers({
     ...reducers
@@ -17,5 +22,5 @@ const rootReducer = combineReducers({
 //}, {});
 
 export default function configureStore() {
-    return createStore(rootReducer);
+    return createStore(rootReducer, {},enhancer);
 }

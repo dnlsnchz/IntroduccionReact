@@ -5,8 +5,10 @@ import Container from '../components/Container';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { login, signUp } from '../requests/auth';
 import { connect } from 'react-redux'
+import * as actions from '../actions/userActions';
+    
+import { login, signUp } from '../requests/auth';
 import {
     BrowserRouter as ReactRouter,
     Link,
@@ -27,7 +29,10 @@ class Login extends React.Component {
             email: this.refs.emailField.getValue(),
             password: this.refs.passwordField.getValue()
         }
-        login(credentials).then(console.log).catch(console.log);
+        login(credentials).then(data => {
+            console.log(data);
+            this.props.dispatch(actions.login(data.jwt));
+        }).catch(console.log);
 
     }
 
@@ -46,6 +51,7 @@ class Login extends React.Component {
                     <Container>
                         <div style={{ "textAlign": "left" }}>
                             <Title />
+                            <h1>{this.props.user.jwt}</h1>
                             <TextField
                                 floatingLabelText="Correo Electronico"
                                 type="email"
