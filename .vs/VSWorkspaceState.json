@@ -2,12 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
-    "\\src\\components\\animations",
-    "\\src\\components\\Navigation",
-    "\\src\\components\\places",
+    "\\src\\actions",
     "\\src\\pages",
-    "\\src\\requests"
+    "\\src\\reducers",
+    "\\src\\store"
   ],
   "SelectedNode": "\\src\\pages\\Login.js",
   "PreviewInSolutionExplorer": false
