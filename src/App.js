@@ -5,7 +5,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import { withRouter } from 'react-router-dom';
 
 //import MyAppBar from './components/navigation/MyAppBar'
-import Navigation from './components/navigation/navigation'
+import Navigation from './components/navigation/Navigation'
 
 import './App.css';
 
