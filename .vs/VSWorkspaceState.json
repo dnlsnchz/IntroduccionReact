@@ -2,9 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\actions",
+    "\\src\\components",
+    "\\src\\components\\Navigation",
     "\\src\\pages",
+    "\\src\\reducers",
     "\\src\\store"
   ],
-  "SelectedNode": "\\src\\index.js",
+  "SelectedNode": "\\src\\components\\Navigation\\navigation.js",
   "PreviewInSolutionExplorer": false
 }

@@ -34,7 +34,7 @@ class Login extends React.Component {
         login(credentials).then(data => {
             console.log(data);
             this.props.dispatch(actions.login(data.jwt));
-            this.props.dispatch(push());
+            this.props.dispatch(push('/'));
         }).catch(console.log);
 
     }
