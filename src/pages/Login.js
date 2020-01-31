@@ -15,6 +15,8 @@ import {
     Route
 } from 'react-router-dom';
 
+import { push } from 'react-router-redux'
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -32,6 +34,7 @@ class Login extends React.Component {
         login(credentials).then(data => {
             console.log(data);
             this.props.dispatch(actions.login(data.jwt));
+            this.props.dispatch(push());
         }).catch(console.log);
 
     }

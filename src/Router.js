@@ -5,13 +5,15 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import { connect } from 'react-redux'
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import App from './App';
 import Dashboard from './pages/Dashboard';
 import Place from './pages/Place';
+
+import { connect } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux'
 
 const userSignedIn = false;
 
@@ -33,7 +35,7 @@ class Router extends React.Component {
 
     render() {
         return (
-            <ReactRouter>
+            <ConnectedRouter history={this.props.history}>
                 <App>
                     <Switch>
                         <Route exact path="/" component={this.home()}></Route>
@@ -43,7 +45,7 @@ class Router extends React.Component {
                         {this.signedInRoutes()}
                     </Switch>
                 </App>
-            </ReactRouter>
+            </ConnectedRouter>
         )
     }
 }
