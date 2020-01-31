@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Router from './Router';
 import registerServiceWorker from './registerServiceWorker';
-import configureStore from './store/configureStore';
+import configureStore, { history } from './store/configureStore';
 import { Provider } from 'react-redux';
 //import createHistory from 'history/createBrowserHistory';
-import { createBrowserHistory } from 'history';
+//import { createBrowserHistory } from 'history';
 
-import { routerMiddleware } from 'react-router-redux';
+//import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'connected-react-router';
 
 //const history = createHistory();
-const history = createBrowserHistory();
+//const history = createBrowserHistory();
 
 const middleware = routerMiddleware(history);
 

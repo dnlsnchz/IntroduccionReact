@@ -15,7 +15,7 @@ import {
     Route
 } from 'react-router-dom';
 
-import { push } from 'react-router-redux'
+import { push } from 'connected-react-router'
 
 class Login extends React.Component {
     constructor(props) {
