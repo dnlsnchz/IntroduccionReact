@@ -30,10 +30,11 @@ class Home extends React.Component {
     }
     loadPlaces() {
         //console.log(getPlaces);
-        getPlaces().then(jsonR => {
-            const places = jsonR.docs;
+        //getPlaces().then(jsonR => {
+        //    const places = jsonR.docs;
 
-        });
+        //});
+
     }
 
     places() {

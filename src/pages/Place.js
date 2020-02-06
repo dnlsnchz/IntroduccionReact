@@ -1,8 +1,11 @@
 import React from 'react';
 import { Card } from 'material-ui/Card'
+import { FlatButton } from 'material-ui';
 import { withRouter } from 'react-router-dom'
+
 import Container from '../components/Container'
 import { getPlace } from '../requests/places';
+import VisitModal from '../components/visits/VisitModal';
 
 
 class Place extends React.Component {
@@ -30,6 +33,7 @@ class Place extends React.Component {
         const { place } = this.state;
         return (
             <div className="Place-container">
+                <VisitModal place={place}/>
                 <header
                     className="Place-cover"
                     style={{ 'backgroundImage': 'url(' + place.coverImage + ')' }}>
@@ -47,6 +51,9 @@ class Place extends React.Component {
                                         <address>{place.address}</address>
                                         <p>{place.description}</p>
                                     </div>
+                                </div>
+                                <div style={{ 'marginTop': '1em' }} >
+                                    <FlatButton label="Agregar un comentario" secondary={true} />
                                 </div>
                             </Card>
                         </div>

@@ -2,12 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\actions",
     "\\src\\components",
-    "\\src\\components\\navigation",
+    "\\src\\components\\places",
+    "\\src\\components\\visits",
+    "\\src\\config",
     "\\src\\pages",
-    "\\src\\reducers"
+    "\\src\\pages\\places",
+    "\\src\\requests",
+    "\\src\\store"
   ],
-  "SelectedNode": "\\src\\pages\\Login.js",
+  "SelectedNode": "\\src\\components\\visits\\VisitModal.js",
   "PreviewInSolutionExplorer": false
 }
