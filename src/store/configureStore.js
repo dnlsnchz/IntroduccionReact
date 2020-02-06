@@ -2,6 +2,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import persistState from 'redux-localstorage'
 import reducers from '../reducers';
 import { createBrowserHistory } from 'history'
+import thunk from 'redux-thunk';
 
 //import { routerReducer } from 'react-router-redux'
 import { connectRouter } from 'connected-react-router'
@@ -43,7 +44,7 @@ export default function configureStore(middleware) {
         rootReducer(history),
         compose(
             persistState('user'),
-            applyMiddleware(middleware)
+            applyMiddleware(middleware, thunk)
         )
     );
 }
