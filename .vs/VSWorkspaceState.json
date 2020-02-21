@@ -1,16 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
-    "\\src\\components",
-    "\\src\\components\\places",
-    "\\src\\components\\visits",
-    "\\src\\config",
+    "\\src\\actions",
     "\\src\\pages",
     "\\src\\pages\\places",
-    "\\src\\requests",
-    "\\src\\store"
+    "\\src\\reducers",
+    "\\src\\requests"
   ],
-  "SelectedNode": "\\src\\components\\visits\\VisitModal.js",
+  "SelectedNode": "\\src\\requests\\favs.js",
   "PreviewInSolutionExplorer": false
 }

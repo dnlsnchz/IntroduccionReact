@@ -6,8 +6,10 @@ export default class FadeAndScale extends React.Component{
     return(
       <div className={this.props.className}>
         <CSSTransition
-          classNames='fade-scale'
-          in={this.props.in}
+                classNames='fade-scale'
+                in={this.props.in}
+                timeout={300}
+                unmountOnExit={true}
           >
           {this.props.children}
         </CSSTransition>

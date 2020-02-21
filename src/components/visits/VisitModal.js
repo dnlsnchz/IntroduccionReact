@@ -7,17 +7,46 @@ import { FlatButton } from 'material-ui';
 import Container from '../Container';
 import Title from '../Title';
 import { yellow700 } from 'material-ui/styles/colors';
+import EmojiPicker from './emoji_picker/EmojiPicker';
 
 export default class VisitModal extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { open: false }
+        this.closeModal = this.closeModal.bind(this);
+        this.emojiSelected = this.emojiSelected.bind(this);
+        //this.openModal = this.openModal.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
+    openModal() {
+        this.setState({
+            open: true
+        });
+    }
+    closeModal() {
+        this.setState({
+            open: false
+        });
+    }
+    submit() {
+        const observation = this.refs.observationField.getValue();
+
+        this.props.onSubmit(observation, this.state.reaction);
+        //this.refs.observationField.setValue("");
+        this.closeModal();
+    }
+    emojiSelected(reaction) {
+        console.log(reaction);
+        this.setState({
+            reaction
+        })
+    }
     render() {
         return (
             <div>
                 <Modal
-                    isOpen={false}
+                    isOpen={this.state.open}
                 >
                     <Container>
                         <div style={{ 'textAlign': 'left', 'marginTop': '2em' }}>
@@ -29,7 +58,9 @@ export default class VisitModal extends React.Component {
                                 </h1>
                             </header>
                             <div className="row">
-                                <div className="col-xs-4 col-sm-2 col-lg-1"></div>
+                                <div className="col-xs-4 col-sm-2 col-lg-1">
+                                    <EmojiPicker onSelect={this.emojiSelected}/>
+                                </div>
                                 <div className="col-xs">
                                     <TextField
                                         floatingLabelText="Cuéntanos qué te pareció este lugar"
@@ -38,8 +69,12 @@ export default class VisitModal extends React.Component {
                                         style={{'width':'100%'}}
                                     />
                                     <div style={{ 'marginTop': '1em' }}>
-                                        <RaisedButton label="Guardar" secondary={true} />
-                                        <FlatButton label="Cancelar" style={{'marginLeft':'2em'}} />
+                                        <RaisedButton label="Guardar" onClick={this.submit} secondary={true} />
+                                        <FlatButton
+                                            onClick={this.closeModal}
+                                            label="Cancelar"
+                                            style={{ 'marginLeft': '2em' }}
+                                        />
                                     </div>
                                 </div>
                             </div>
